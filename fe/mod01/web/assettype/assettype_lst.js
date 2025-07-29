@@ -1,8 +1,8 @@
 _cp = _app.curr_page
 
 _cp.init = function(){
-	_cp.views.page = './fe/app/24005/mod01/web/assettype/assettype_lst.htm';
-	_cp.api.list = '/be/app/24005/api/app24005_personal_hub/be/mod01/assettype/';
+	_cp.views.page = './fe/app/25014/mod01/web/assettype/assettype_lst.htm';
+	_cp.api.list = '/be/app/25014/api/app25014_professional_hub/be/mod01/assettype/';
 
 	_cp.render_page(_cp.views.page,'');	
 
