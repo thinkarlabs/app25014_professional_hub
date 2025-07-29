@@ -1,0 +1,29 @@
+{% extends "fe/app/25015/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+  <div class="card-header" style="height:45px">
+	<h4 class="float-start ps-2">Asset Type Detail</h4>	
+	
+	<button type="button" class="btn btn-primary btn-sm float-end ms-2" id='btnCancel'>Close</button>		
+	<button id="btnSave" class="btn btn-success btn-sm float-end ms-2">Save</button>		
+
+  </div>
+
+  <div class="card-body">
+	<form method="post" id="assettype_form">
+		<input type="hidden" class="form-control" id="txt_org_id" value="{{ses.user.id}}" placeholder="" name="user_id">
+		<input type="hidden" class="form-control" id="txt_org_name" value="{{ses.user.name}}" placeholder="" name="user_name">
+	
+		
+	<div class="col-3">
+	  <label for="exampleFormControlInput1">Title</label>
+	  <input type="text" class="form-control" id="exampleFormControlInput1" value="{{title}}" placeholder="" name="title">
+	</div>
+	
+	
+	
+    </form>
+  </div>
+</div>
+{% endblock %}

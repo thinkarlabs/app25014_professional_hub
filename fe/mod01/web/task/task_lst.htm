@@ -1,0 +1,48 @@
+{% extends "fe/app/25014/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+  <div class="card-header" style="height:45px">
+	<h5 class="float-start ps-2">Task List</h5>
+
+	<div class="button btn btn-primary btn-sm float-end ms-2" data-nav='store.task_dtl'><i class="bi bi-dpad"></i> Add</div>
+		<div class="input-group input-group-sm float-end ms-2" style="width:200px">
+	  <input id="searchprojects" type="text" class="form-control" aria-label="Search">
+	  <span class="input-group-text"><i class="bi bi-search"></i></span>
+	</div>
+	
+	<div class="float-end me-2">
+	<div class="float-start me-2">
+		<input type="date" id="st_date" class="form-select form-select-sm mx-2">
+	</div>
+	<div class="float-start me-2">
+		<input type="date" id="en_date" class="form-select form-select-sm mx-2">
+	</div>
+	
+	<div class="float-end me-2">
+		<x-filter id='project' class="form-select form-select-sm mx-2">
+
+		</x-filter>
+	</div>
+	
+	<div class="float-end me-4">
+		<x-filter id='status' class="form-select form-select-sm mx-4" 
+			x-value-id="{{status_id}}" x-value-disp="{{status_name}}" 
+			x-name-id="status_id" x-name-disp="status_name">
+			<option value=''>All Status</option>
+			<option value='NA'>Not Started</option>
+			<option value='IP'>In Progress</option>
+			<option value='CP'>Completed</option>
+			<option value='OH'>On Hold</option>
+		</x-filter> 
+	</div>
+	</div>
+	</div>	
+
+  </div>
+
+  <div id="x-tasks" class="py-0 ps-4 px-1" style="width:99.4%">
+
+  </div>  
+
+{% endblock %}

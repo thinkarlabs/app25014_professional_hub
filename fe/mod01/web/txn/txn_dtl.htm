@@ -1,0 +1,91 @@
+{% extends "fe/app/25014/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+  <div class="card-header" style="height:45px">
+	<h5 class="float-start ps-2">Transaction Details</h5>
+	{% if _id|length %}
+	<div>
+		<button type="button" id="btnCancel" class="btn btn-primary btn-sm float-end ms-2">Close</button>
+    </div>
+		
+	{% else %}
+	<div>
+		<button type="button" id="btnCancel" class="btn btn-primary btn-sm float-end ms-2">Close</button>
+		<button type="button" id="btnSave" class="btn btn-success btn-sm float-end ms-2">Save</button>
+    </div>	   
+	{% endif %}
+			
+  </div>
+
+  <div class="card-body">
+
+	<form method="post" id="txn_form">		  
+    <div id='x-challenge' class="container-float">
+	<div class="row">
+		<input type="hidden" class="form-control" id="txt_org_id" value="{{ses.user.id}}" placeholder="" name="user_id">
+		<input type="hidden" class="form-control" id="txt_org_name" value="{{ses.user.name}}" placeholder="" name="user_name">
+	
+	<div class="col-4">
+		<label for="exampleFormControlInput1">Transaction Title</label>		
+		<input type="text" class="form-control" id="txttxntitle" value="{{txn_title}}" name="txn_title">
+
+	</div>
+	
+	<div class="col-4">
+		<label>Transaction Type</label>
+		<x-select id='txntype' class="form-select" 
+			x-value-id="{{txntype_id}}" x-value-disp="{{txntype_name}}" 
+			x-name-id="txntype_id" x-name-disp="txntype_name">
+			<option value=''>Select Transaction Type</option>
+			<option value='D'>Debit</option>
+			<option value='C'>Credit</option>
+			<option value='T'>Transfer</option>
+		</x-select>
+	</div>
+
+	<div class="col-4">
+		<label>From Account</label>
+		<x-select id='from_acc' class="form-select" 
+			x-value-id="{{from_acc_id}}" x-value-disp="{{from_acc_name}}" 
+			x-name-id="from_acc_id" x-name-disp="from_acc_name">
+		</x-select>
+	</div>
+	
+	<div class="col-4">
+		<label>To Account</label>
+		<x-select id='to_acc' class="form-select" 
+			x-value-id="{{to_acc_id}}" x-value-disp="{{to_acc_name}}" 
+			x-name-id="to_acc_id" x-name-disp="to_acc_name">
+		</x-select>
+	</div>
+	
+	
+	
+	<div class="col-4">
+	    <label for="exampleFormControlInput1">Date</label>		
+		<input type="date" class="form-control" id="txtdate" value="{{txn_date}}" name="txn_date">
+	</div>
+	
+	<div class="col-4">
+	    <label for="exampleFormControlInput1">Amount</label>		
+		<input type="number" class="form-control" id="txtamt" value="{{amt}}" name="amt">
+	</div>
+    <div class="col-4">
+		<label>Category</label>
+		<x-select id='category' class="form-select" 
+			x-value-id="{{category_id}}" x-value-disp="{{category_name}}" 
+			x-name-id="category_id" x-name-disp="category_name">
+		</x-select>
+	</div>		
+	
+	</div>	
+	</div>
+			
+    </form>
+	
+	
+  </div>
+</div>
+{% endblock %}
+

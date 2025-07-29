@@ -1,0 +1,81 @@
+{% block topheader %}
+<div id='x-header'>
+	<nav class="navbar navbar-expand navbar-dark fixed-top bg-dark bg-gradient p-1" style="height:40px">
+	  <div class="container-fluid">
+		<p class="navbar-brand my-0 ms-2">RubixWorks</p>
+		
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+		  <ul class="navbar-nav ms-auto">
+		   <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle"id="dropdownasset" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+					Asset
+				</a>
+				<div class="dropdown-menu dropdown-menu-end">
+					<a class="dropdown-item" href="#" data-nav="store.assettype_lst">AssetType</a>
+					<a class="dropdown-item" href="#" data-nav="store.contact_lst">Contact</a>
+					<a class="dropdown-item" href="#" data-nav="store.asset_lst">Asset</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle"id="dropdowntask" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+					Tasks
+				</a>
+				<div class="dropdown-menu dropdown-menu-end">
+					<a class="dropdown-item" href="#" data-nav="store.dashboard_lst">Reminder</a>
+					<a class="dropdown-item" href="#" data-nav="store.project_lst">Project</a>
+					<a class="dropdown-item" href="#" data-nav="store.task_lst">Task</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle"id="manage" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+					Money
+				</a>
+				<div class="dropdown-menu dropdown-menu-end">
+					<a class="dropdown-item" href="#" data-nav="store.account_lst">Account</a>
+					<a class="dropdown-item" href="#" data-nav="store.category_lst">Category</a>
+					<a class="dropdown-item" href="#" data-nav="store.txn_lst">Transaction</a>
+					<a class="dropdown-item" href="#" data-nav='store.dashboard'>Dashboard</a>
+
+				</div>
+			
+			<!-- Gear Icon Dropdown for Neev + Logout -->
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="dropdownSettings" data-bs-toggle="dropdown" aria-expanded="false">
+				<i class="bi bi-gear"></i>
+			  </a>
+			  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownSettings">
+				<li><a class="dropdown-item" href="/fe/neev/main/web/index.htm">Neev</a></li>
+				<li><a class="dropdown-item" href="/fe/rubix/main/web/index.html">Logout</a></li>
+			  </ul>
+			</li>
+
+		
+
+		
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+	{% block subheader %}
+	
+	{% endblock %}
+</div>	
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+<footer class="navbar navbar-expand navbar-dark fixed-bottom bg-secondary p-1" style="height:50px">
+  <div class="container-fluid d-flex justify-content-between align-items-center px-3">
+    <p class="text-light my-0">&copy; Powered by Thinkar Labs</p>
+    <p class="text-light my-0">{{ ses.user.name }} | {{ ses.user.role_name }}</p>
+  </div>
+</footer>
+{% endblock %}
+
+

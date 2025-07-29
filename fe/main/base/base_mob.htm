@@ -1,0 +1,62 @@
+{% block topheader %}
+<div id='x-header'>
+	<nav class="navbar navbar-expand navbar-dark fixed-top bg-dark p-1">
+	  <div class="container-fluid">
+        <img class="p-1" style="height: 40px;" src="/static/app00/_res/img/logo.png"></img>			        
+		<span class="d-md-inline text-white" id="net_name">Sanjeevini AI</span>
+		
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+		  <ul class="navbar-nav ms-auto">
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" data-nav="mob.farmer_lst"><i class="bi bi-person-bounding-box"></i></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" data-nav="mob.cattle_lst"><i class="bi bi-cloud-sun"></i></a>
+			</li>
+			
+			 <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" id="dropdowncatalog" href="#navbar-help" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+					<i class="bi bi-gear"></i>
+				</a>
+
+				<div class="dropdown-menu dropdown-menu-end">
+					<a class="dropdown-item" href="#" data-nav="mob.request_lst">AI Request</a>
+					<a class="dropdown-item" href="#" data-nav="mob.visit_lst">AI Visit</a>
+					<a class="dropdown-item" href="#" data-nav="mob.followup_lst">AI Follow Up</a>
+				</div> 
+			</li>
+			
+
+			<!-- <li class="nav-item"> -->
+			  <!-- <a class="nav-link active" aria-current="page" data-nav="mob.request_lst"><i class="bi bi-card-list"></i></a> -->
+			<!-- </li> -->
+			
+
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" href="/neev/mob"><i class="bi bi-box-arrow-right"></i></a>
+			</li>
+		  </ul>
+		</div>
+
+	  </div>
+	</nav>
+	{% block subheader %}
+	
+	{% endblock %}
+</div>	
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+<footer class="navbar navbar-expand navbar-dark fixed-bottom bg-dark p-1" style="height:30px">
+  <div class="container-fluid1">
+	<p class="text-light mt-3">&copy; Powered by Thinkar Labs</p>
+  </div>
+</footer>
+{% endblock %}

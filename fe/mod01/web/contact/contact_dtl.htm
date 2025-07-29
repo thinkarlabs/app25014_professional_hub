@@ -1,0 +1,54 @@
+{% extends "fe/app/25014/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+  <div class="card-header" style="height:45px">
+	<h5 class="float-start ps-2">Contact Detail</h5>
+	
+	<button type="button" class="btn btn-primary btn-sm float-end ms-2" id='btnCancel'>Close</button>		
+	<button id="btnSave" class="btn btn-success btn-sm float-end ms-2">Save</button>		
+
+  </div>
+
+  <div class="card-body">
+	<form method="post" id="form_contact">
+  <div class='row'>
+		<input type="hidden" class="form-control" id="txt_org_id" value="{{ses.user.id}}" placeholder="" name="user_id">
+		<input type="hidden" class="form-control" id="txt_org_name" value="{{ses.user.name}}" placeholder="" name="user_name">
+	
+	<div class="col-3">
+	  <label for="exampleFormControlInput1">ContactName</label>
+	  <input type="text" class="form-control" id="exampleFormControlInput1" value="{{contact_name}}" placeholder="" name="contact_name">
+	</div>
+	
+	<div class="col-3">
+	  <label for="exampleFormControlInput1">PhoneNo</label>
+	  <input type="text" class="form-control" id="exampleFormControlInput1" value="{{phone_no}}" placeholder="" name="phone_no">
+	</div>
+	
+	<div class="col-3">
+	  <label for="exampleFormControlInput1">Email</label>
+	  <input type="text" class="form-control" id="exampleFormControlInput1" value="{{email}}" placeholder="" name="email">
+	</div>
+	
+	<div class="col-3">
+		<label>Gender</label>
+		<x-select id='gender' class="form-select" 
+			x-value-id="{{gender_id}}" x-value-disp="{{gender_name}}" 
+			x-name-id="gender_id" x-name-disp="gender_name">
+			<option value=''>Select Gender</option>
+			<option value='M'>Male</option>
+			<option value='F'>Female</option>
+			<option value='O'>Others</option>
+		</x-select>
+	</div>
+
+	
+    </form>
+	</div>
+
+  </div>
+  
+</div>
+{% endblock %}
+

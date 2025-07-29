@@ -1,0 +1,78 @@
+{% extends "fe/app/25014/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+ 
+  <div class="card-header" style="height:45px">
+    <h5 class="float-start ps-2">Task Detail</h5>
+    <button type="button" id="btnCancel" class="btn btn-primary btn-sm float-end ms-2">Close</button>
+    <button type="button" id="btnSave" class="btn btn-success btn-sm float-end ms-2">Save</button>
+</div>
+
+  <div class="card-body">
+
+	<form method="post" id="form_book">		  
+    <div id='x-challenge' class="container-float">
+	<div class="row">
+	
+	 
+		<input type="hidden" class="form-control" id="txt_org_id" value="{{ses.user.id}}" placeholder="" name="user_id">
+		<input type="hidden" class="form-control" id="txt_org_name" value="{{ses.user.name}}" placeholder="" name="user_name">
+	
+	<div class="col-4">
+			<label for="exampleFormControlInput1">Task Title</label>
+			<input type="text" id="exampleFormControlInput1" class="form-control" value="{{title}}" placeholder="" name="title">			
+	</div>
+			
+	<div class="col-4">
+		<label>Project</label>
+		<x-select id='project' class="form-select" 
+			x-value-id="{{project_id}}" x-value-disp="{{project_name}}" 
+			x-name-id="project_id" x-name-disp="project_name">
+
+		</x-select>
+	</div>
+	
+	
+	<div class="col-4">
+		<label>Status</label>
+		<x-select id='status' class="form-select" 
+			x-value-id="{{status_id}}" x-value-disp="{{status_name}}" 
+			x-name-id="status_id" x-name-disp="status_name">
+			<option value=''>Select Status</option>
+			<option value='NA'>Not Started</option>
+			<option value='IP'>In Progress</option>
+			<option value='CP'>Completed</option>
+			<option value='OH'>On Hold</option>
+		</x-select>
+	</div>
+		
+	<div class="col-4">
+			<label for="exampleFormControlInput1">Reminder Date</label>
+			<input type="date" id="exampleFormControlInput1" class="form-control" value="{{reminder_date}}" placeholder="" name="reminder_date">
+		</div>	
+		
+	<div class="col-4">
+		<label>Owner</label>
+		<x-select id='owner' class="form-select" 
+			x-value-id="{{owner_id}}" x-value-disp="{{owner_name}}" 
+			x-name-id="owner_id" x-name-disp="owner_name">
+
+		</x-select>
+	</div>
+	
+	
+	<div class="col-4">
+	<label>Description</label>
+	<textarea class="form-control" id="exampleFormControlInput1" name="desc">{{desc}}</textarea>
+	</div>
+			
+    </form>
+	
+	</div>
+	
+	</div>
+  </div>
+</div>
+{% endblock %}
+

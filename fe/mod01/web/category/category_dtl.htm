@@ -1,0 +1,34 @@
+{% extends "fe/app/25014/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+  
+  <div class="card-header" style="height:45px">
+    <h5 class="float-start ps-2">Category Detail</h5>
+    <button type="button" id="btnCancel" class="btn btn-primary btn-sm float-end ms-2">Close</button>
+    <button type="button" id="btnSave" class="btn btn-success btn-sm float-end ms-2">Save</button>
+</div>
+
+  <div class="card-body">
+
+	<form method="post" id="category_form">		  
+    <div id='x-challenge' class="container-float">
+	<div class="row">
+		<input type="hidden" class="form-control" id="txt_org_id" value="{{ses.user.id}}" placeholder="" name="user_id">
+		<input type="hidden" class="form-control" id="txt_org_name" value="{{ses.user.name}}" placeholder="" name="user_name">
+	
+	
+	
+	<div class="col-3">		
+		  <label for="exampleFormControlInput1">Category Name</label>
+		  <input type="text" class="form-control" id="txtname" value="{{name}}" placeholder="" name="name">
+		</div>
+	
+	</div>
+	
+	</div>
+	</form>
+  </div>
+</div>
+{% endblock %}
+

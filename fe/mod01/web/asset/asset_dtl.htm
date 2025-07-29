@@ -1,0 +1,73 @@
+{% extends "fe/app/25014/main/base/admin_base.htm" %}
+
+{% block body %}
+<div id='x-main' class="container-full" style="margin-top:40px">
+  <div class="card-header" style="height:45px">
+	<h5 class="float-start ps-2">Asset Detail</h5>
+	<button type="button" class="btn btn-primary btn-sm float-end ms-2" id='btnCancel'>Close</button>		
+	<button id="btnSave" class="btn btn-success btn-sm float-end ms-2">Save</button>		
+
+  </div>
+
+  <div class="card-body">
+	<form method="post" id="form_asset">
+	<div class="row">
+		<input type="hidden" class="form-control" id="txt_org_id" value="{{ses.user.id}}" placeholder="" name="user_id">
+		<input type="hidden" class="form-control" id="txt_org_name" value="{{ses.user.name}}" placeholder="" name="user_name">
+	
+		<div class="col-4">		
+		  <label for="exampleFormControlInput1">Title</label>
+		  <input type="text" class="form-control" id="exampleFormControlInput1" value="{{title}}" placeholder="" name="title">
+		</div>
+	
+	<div class="col-4">
+		<label>Type</label>
+		<x-select id='type' class="form-select" 
+			x-value-id="{{type_id}}" x-value-disp="{{type_name}}" 
+			x-name-id="type_id" x-name-disp="type_name">
+
+		</x-select>
+	</div>
+	<div class="col-4">		
+		  <label for="exampleFormControlInput1">PurchaseDate</label>
+		  <input type="date" class="form-control" id="exampleFormControlInput1" value="{{purch_date}}" placeholder="" name="purch_date">
+	</div>
+	
+	<div class="col-4 mt-2">
+		<label>Owner</label>
+		<x-select id='contact' class="form-select" 
+			x-value-id="{{contact_id}}" x-value-disp="{{contact_name}}" 
+			x-name-id="contact_id" x-name-disp="contact_name">
+
+		</x-select>
+	</div>
+	<div class="col-4 mt-2">		
+		  <label for="exampleFormControlInput1">Price</label>
+		  <input type="number" class="form-control" id="exampleFormControlInput1" value="{{price}}" placeholder="" name="price">
+	</div>
+	<div class="col-4 mt-2">		
+		  <label for="exampleFormControlInput1">Identifier</label>
+		  <input type="text" class="form-control" id="exampleFormControlInput1" value="{{identifier}}" placeholder="" name="identifier">
+	</div>
+	
+	
+	<div class="col-4 mt-2">
+	<label>Waranty</label>
+	<textarea class="form-control" id="exampleFormControlInput1" name="warantydetail">{{warantydetail}}</textarea>	
+	</div>
+	
+	<div class="col-4 mt-2">
+	<label>Description</label>
+	<textarea class="form-control" id="exampleFormControlInput1" name="desc">{{desc}}</textarea>
+	</div>
+
+	
+	
+    </form>
+	</div>
+
+  </div>
+  
+</div>
+{% endblock %}
+
