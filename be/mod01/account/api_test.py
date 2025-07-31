@@ -11,6 +11,9 @@ config = dotenv_values(".env")
 app.database = app.mongodb_client[app.dbname + "_test"]
 base_app.database = base_app.mongodb_client[base_app.dbname + "_test"]
 
+_headers = {
+                "x-ses": '{"org_id": "66", "org_name": "osaat"}'
+            }
 
 
 #TEST CASE FOR CREATE
@@ -18,15 +21,14 @@ def test_create_account(capsys):
     with TestClient(app) as client:
         with capsys.disabled():
             print('test_create_account')
-            response = client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"user_id":"123","user_name":"guguldash","acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00})
+            response = client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00},headers=_headers)
             assert response.status_code == 201
             body = response.json()
             assert body.get("acc_title") == "ICICI"
             assert body.get("acc_type_name") == "Bank"
             assert body.get("acc_type_id") == "Bank"
             assert body.get("balance") == 1000.00
-            assert body.get("user_id") == "123"
-            assert body.get("user_name") == "guguldash"
+            
             assert "_id" in body
 
 #TEST CASE FOR LIST        
@@ -42,7 +44,7 @@ def test_delete_account(capsys):
     with TestClient(app) as client:
         with capsys.disabled():
             print('test_delete_account')
-            new_account = client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"user_id":"123","user_name":"guguldash","acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00}).json()
+            new_account = client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00},headers=_headers).json()
             delete_account_response = client.delete("/api/app25014_professional_hub/be/mod01/accoutn/" + new_account.get("_id"))
             assert delete_account_response.status_code == 204
 
@@ -51,7 +53,7 @@ def test_find_account(capsys):
     with TestClient(app) as client:
         with capsys.disabled():
             print('test_find_account')
-            new_account =client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"user_id":"123","user_name":"guguldash","acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00}).json()
+            new_account =client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00},headers=_headers).json()
             get_accounts_response = client.get("/api/app25014_professional_hub/be/mod01/accoutn/" + new_account.get("_id"))
             assert get_accounts_response.status_code == 200
             assert get_accounts_response.json() == new_account
@@ -60,7 +62,7 @@ def test_update_acc_title(capsys):
     with TestClient(app) as client:
         with capsys.disabled():
             print("test_update_acc_title")
-            new_account =client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"user_id":"123","user_name":"guguldash","acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00}).json()
+            new_account =client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00},headers=_headers).json()
             response = client.post("/api/app25014_professional_hub/be/mod01/accoutn/" + new_account.get("_id"), json={"acc_title": "SBI"})
             assert response.status_code == 200
             assert response.json().get("acc_title") == "SBI"
@@ -71,7 +73,7 @@ def test_update_acc_type(capsys):
     with TestClient(app) as client:
         with capsys.disabled():
             print("test_update_acc_type")
-            new_account =client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"user_id":"123","user_name":"guguldash","acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00}).json()
+            new_account =client.post("/api/app25014_professional_hub/be/mod01/accoutn/", json={"acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00},headers=_headers).json()
             response = client.post("/api/app25014_professional_hub/be/mod01/accoutn/" + new_account.get("_id"), json={"acc_type_name": "Cash"})
             assert response.status_code == 200
             assert response.json().get("acc_type_name") == "Cash"
@@ -80,7 +82,7 @@ def test_update_balance(capsys):
     with TestClient(app) as client:
         with capsys.disabled():
             print("test_update_balance")
-            new_account =client.post("/api/app24005_personal_hub/be/mod01/accoutn/", json={"user_id":"123","user_name":"guguldash","acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00}).json()
+            new_account =client.post("/api/app24005_personal_hub/be/mod01/accoutn/", json={"acc_title":"ICICI", "acc_type_name": "Bank", "acc_type_id": "Bank", "balance": 1000.00},headers=_headers).json()
             response = client.post("/api/app24005_personal_hub/be/mod01/accoutn/" + new_account.get("_id"), json={"balance": 8000.00})
             assert response.status_code == 200
             assert response.json().get("balance") == 8000.00
