@@ -37,7 +37,7 @@ _cp.on.filter_list = function() {
     
     _filter = "?en=" + formattedDate + "&st=2024-01-01";
     _filter += '&notstatus=CP';
-	_filter += '&staff=' +_app.curr_ses.user.id;
+	_filter += '&org=' +_app.curr_ses.user.org_id;
 
     
     _app.log(_filter);

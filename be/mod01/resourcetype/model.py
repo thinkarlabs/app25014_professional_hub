@@ -4,11 +4,10 @@ from datetime import date
 from typing import Optional, Dict
 from pydantic import BaseModel, Field, Json
 
-class m_assettype(BaseModel):
+class m_resourcetype(BaseModel):
     id: UUID = Field(default_factory=uuid.uuid4, alias="_id")
     title:str=Field(...)
-    user_id:str = Field(...)
-    user_name:str = Field(...)
     
-class assettypeUpdate(BaseModel):
+    
+class resourcetypeUpdate(BaseModel):
     title: Optional[str] = None

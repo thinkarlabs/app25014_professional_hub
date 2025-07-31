@@ -9,9 +9,7 @@ class m_project(BaseModel):
     project_title : str = Field(...)
     status_name : str = Field(...)
     status_id : str = Field(...)
-    user_id:str = Field(...)
-    user_name:str = Field(...)
-   
+    
 class projectUpdate(BaseModel):
     project_title : Optional[str] = None
     status_name : Optional[str] = None

@@ -1,8 +1,8 @@
 _cp = _app.curr_page
 
 _cp.init = function(){
-	_cp.views.page = './fe/app/25014/mod01/web/assettype/assettype_dtl.htm';
-	_cp.api.item = '/be/app/25014/api/app25014_professional_hub/be/mod01/assettype/';
+	_cp.views.page = './fe/app/25014/mod01/web/resourcetype/resourcetype_dtl.htm';
+	_cp.api.item = '/be/app/25014/api/app25014_professional_hub/be/mod01/resourcetype/';
 	
 	if (_cp.params !== ''){
 		_app.get(_cp.api.item + _cp.params, function(item_data){
@@ -25,14 +25,14 @@ _cp.load = function(){
 
 // CANCLE
 _cp.on.Cancel = function(){
-	_app.nav_page('store.assettype_lst');
+	_app.nav_page('store.resourcetype_lst');
 	return false;
 }
 
 // SAVE
 _cp.on.Save = function(){
-	_app.post_form($('#assettype_form'), _cp.api.item + _cp.params, function(resp){
-		_app.nav_page('store.assettype_lst');
+	_app.post_form($('#resourcetype_form'), _cp.api.item + _cp.params, function(resp){
+		_app.nav_page('store.resourcetype_lst');
 	});
 	return false;
 }

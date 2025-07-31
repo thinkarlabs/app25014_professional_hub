@@ -16,6 +16,11 @@ app25014_professional_hub_be_mod01_project_api = APIRouter()
 @app25014_professional_hub_be_mod01_project_api.post("/", response_description="Create a new project", status_code=status.HTTP_201_CREATED, response_model= m_project)
 async def create_project(request: Request, p_project: m_project = Body(...)):
     j_project = jsonable_encoder(p_project)
+    ses = request.headers['x-ses']          
+    j_ctx = json.loads(ses)
+    print('j_ctx',j_ctx)
+    j_project['org_id']=str(j_ctx['org_id'])
+    j_project['org_name']=str(j_ctx['org_name'])
     xc_projects = rubix_collecton(request.app.database, "projects")
     created_project= xc_projects.create(j_project)
     return created_project
@@ -23,18 +28,16 @@ async def create_project(request: Request, p_project: m_project = Body(...)):
  
 #LIST   
 @app25014_professional_hub_be_mod01_project_api.get("/", response_description="List all projects")
-def list_projects(request: Request,status:str='',staff:str=''):
+def list_projects(request: Request,status:str='',org:str=''):
     qry = {}
     
-    if 'x-ses' in request.headers:
-        ses = request.headers['x-ses']        
-        j_ctx = json.loads(ses)
+    
         
     if status!='':
         qry['status_id'] = status
         
-    if staff!='':
-        qry['user_id'] = staff
+    if org!='':
+        qry['org_id'] = org
         
     xc_projects = rubix_collecton(request.app.database, "projects")
     projects = xc_projects.find_list(qry)     

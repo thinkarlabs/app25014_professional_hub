@@ -5,11 +5,11 @@ let navMap = {
 // ------------------jobrole------------------------
     "store.dashboard_lst": "/fe/app/25014/mod01/web/dashboard/dashboard_lst.js",
 	"store.dashboard": "/fe/app/25014/mod01/web/dashboard/dashboard.js",
-    "store.asset_lst": "/fe/app/25014/mod01/web/asset/asset_lst.js",
-	"store.asset_dtl": "/fe/app/25014/mod01/web/asset/asset_dtl.js",
+    "store.resource_lst": "/fe/app/25014/mod01/web/resource/resource_lst.js",
+	"store.resource_dtl": "/fe/app/25014/mod01/web/resource/resource_dtl.js",
 
-    "store.assettype_lst": "/fe/app/25014/mod01/web/assettype/assettype_lst.js",
-	"store.assettype_dtl": "/fe/app/25014/mod01/web/assettype/assettype_dtl.js",
+    "store.resourcetype_lst": "/fe/app/25014/mod01/web/resourcetype/resourcetype_lst.js",
+	"store.resourcetype_dtl": "/fe/app/25014/mod01/web/resourcetype/resourcetype_dtl.js",
     "store.contact_lst": "/fe/app/25014/mod01/web/contact/contact_lst.js",
 	"store.contact_dtl": "/fe/app/25014/mod01/web/contact/contact_dtl.js",
     "store.task_lst": "/fe/app/25014/mod01/web/task/task_lst.js",

@@ -15,6 +15,11 @@ app25014_professional_hub_be_mod01_txn_api = APIRouter()
 @app25014_professional_hub_be_mod01_txn_api.post("/", response_description="Create a new txn", status_code=status.HTTP_201_CREATED)
 async def create_txn(request: Request, p_txn: m_txn = Body(...)):
     txn = jsonable_encoder(p_txn)
+    ses = request.headers['x-ses']          
+    j_ctx = json.loads(ses)
+    print('j_ctx',j_ctx)
+    txn['org_id']=str(j_ctx['org_id'])
+    txn['org_name']=str(j_ctx['org_name'])
     xc_txns = rubix_collecton(request.app.database, "txns")
     created_txn = xc_txns.create(txn)
     
@@ -61,13 +66,13 @@ async def create_txn(request: Request, p_txn: m_txn = Body(...)):
    
 # LIST 
 @app25014_professional_hub_be_mod01_txn_api.get("/", response_description="List all txn")
-def list_txn(request: Request,category:str='', st: str = '', en: str = '',staff: str = ''):
+def list_txn(request: Request,category:str='', st: str = '', en: str = '',org: str = ''):
     qry = {}
     
     if category!='':
         qry['category_id'] = category
-    if staff!='':
-        qry['user_id'] = staff
+    if org!='':
+        qry['org_id'] = org
         
     if st!='' and en!='':
         start_date = datetime.strptime(st, '%Y-%m-%d')

@@ -32,7 +32,7 @@ _cp.init = function(){
 // }
 
 _cp.on.filter_list = function() {
-    _filter = '?staff=' +_app.curr_ses.user.id;
+    _filter = '?org=' +_app.curr_ses.user.org_id;
 	_app.log("_filter")
 	_app.log(_filter)
     _app.get(_cp.api.list + _filter, function(data) {

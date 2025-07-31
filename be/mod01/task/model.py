@@ -14,8 +14,7 @@ class m_task(BaseModel):
     project_name: str  = Field(...)
     status_id: str = Field(...)
     status_name: str = Field(...)
-    user_id:str = Field(...)
-    user_name:str = Field(...)
+    
     desc: str = Field(...)
 
 class taskUpdate(BaseModel):

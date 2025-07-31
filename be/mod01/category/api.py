@@ -12,16 +12,21 @@ app25014_professional_hub_be_mod01_category_api = APIRouter()
 @app25014_professional_hub_be_mod01_category_api.post("/", response_description="Create a new category", status_code=status.HTTP_201_CREATED, response_model=m_category)
 async def create_category(request: Request, p_cat: m_category = Body(...)):
     category = jsonable_encoder(p_cat)
+    ses = request.headers['x-ses']          
+    j_ctx = json.loads(ses)
+    print('j_ctx',j_ctx)
+    category['org_id']=str(j_ctx['org_id'])
+    category['org_name']=str(j_ctx['org_name'])
     xc_categories = rubix_collecton(request.app.database, "categories")
     created_category = xc_categories.create(category)
     return created_category
     
 #LIST 
 @app25014_professional_hub_be_mod01_category_api.get("/", response_description="List all category")
-def list_category(request: Request,staff: str = ''):
+def list_category(request: Request, org: str = ''):
     qry = {}
-    if staff!='':
-        qry['user_id'] = staff
+    if org!='':
+        qry['org_id'] = org
     xc_categories = rubix_collecton(request.app.database, "categories")
     categories = xc_categories.find_list(qry)
     return {"categories":categories}

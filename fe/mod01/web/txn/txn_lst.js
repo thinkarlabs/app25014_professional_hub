@@ -8,7 +8,7 @@ _cp.init = function(){
 
 	//Render the page.
 	_cp.render_page(_cp.views.page,'');
-		var _filter = '?staff=' +_app.curr_ses.user.id;
+		var _filter = '?org=' +_app.curr_ses.user.org_id;
 	
 			
 	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/category/'+_filter, function(data){
@@ -36,7 +36,7 @@ _cp.on.filter_list = function(){
 	_app.log(endDate)
 	_filter ='?category=' + $('#sel_category').val()
     _filter+= '&st=' + $('#st_date').val() + '&en=' + $('#en_date').val()
-	_filter += '&staff=' +_app.curr_ses.user.id;
+	_filter += '&org=' +_app.curr_ses.user.org_id;
 
 	
 	_app.log(_filter);

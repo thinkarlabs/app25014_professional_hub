@@ -15,7 +15,7 @@ from rubix.be.db import dbconn
 load_dotenv()
 app = FastAPI()
 app.mongodb_client = dbconn
-app.dbname = "DB_NAME05"
+app.dbname = "DB_NAME25014"
 app.database = app.mongodb_client[app.dbname]
 
 
@@ -23,12 +23,12 @@ from store.app25014_professional_hub.be.mod01.account.api import app25014_profes
 app.include_router(app25014_professional_hub_be_mod01_account_api_apiroutes, tags=["accoutns"], prefix="/api/app25014_professional_hub/be/mod01/accoutn")
 
 
-from store.app25014_professional_hub.be.mod01.asset.api import app25014_professional_hub_be_mod01_asset_api as app25014_professional_hub_be_mod01_asset_api_apiroutes
-app.include_router(app25014_professional_hub_be_mod01_asset_api_apiroutes, tags=["assets"], prefix="/api/app25014_professional_hub/be/mod01/asset")
+from store.app25014_professional_hub.be.mod01.resource.api import app25014_professional_hub_be_mod01_resource_api as app25014_professional_hub_be_mod01_resource_api_apiroutes
+app.include_router(app25014_professional_hub_be_mod01_resource_api_apiroutes,tags=["resources"], prefix="/api/app25014_professional_hub/be/mod01/resource")
 
 
-from store.app25014_professional_hub.be.mod01.assettype.api import app25014_professional_hub_be_mod01_assettype_api as app25014_professional_hub_be_mod01_assettype_api_apiroutes
-app.include_router(app25014_professional_hub_be_mod01_assettype_api_apiroutes, tags=["assettypes"], prefix="/api/app25014_professional_hub/be/mod01/assettype")
+from store.app25014_professional_hub.be.mod01.resourcetype.api import app25014_professional_hub_be_mod01_resourcetype_api as app25014_professional_hub_be_mod01_resourcetype_api_apiroutes
+app.include_router(app25014_professional_hub_be_mod01_resourcetype_api_apiroutes, tags=["resourcetypes"], prefix="/api/app25014_professional_hub/be/mod01/resourcetype")
 
 
 from store.app25014_professional_hub.be.mod01.contact.api import app25014_professional_hub_be_mod01_contact_api as app25014_professional_hub_be_mod01_contact_api_apiroutes

@@ -1,8 +1,8 @@
 _cp = _app.curr_page
-
+_app.msg("hyyyyy5")
 _cp.init = function(){
-	_cp.views.page = './fe/app/25014/mod01/web/asset/asset_dtl.htm';
-	_cp.api.item = '/be/app/25014/api/app25014_professional_hub/be/mod01/asset/';
+	_cp.views.page = './fe/app/25014/mod01/web/resource/resource_dtl.htm';
+	_cp.api.item = '/be/app/25014/api/app25014_professional_hub/be/mod01/resource/';
 	
 	
 	//If params then it is in EDIT mode. Else Add mode.
@@ -19,13 +19,13 @@ _cp.init = function(){
 	
 }
 _cp.load = function(){
-	var _filter = '?staff=' +_app.curr_ses.user.id;
-	_app.get('/be/app/25014/api/app24005_personal_hub/be/mod01/assettype/'+_filter, function(data){
-		_cp.data.assettypes = data.assettypes
-		type.init(_cp.data.assettypes,'--Select an asset type--','_id','title',':auto')
+	var _filter = '?org=' +_app.curr_ses.user.org_id;
+	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/resourcetype/'+_filter, function(data){
+		_cp.data.resourcetypes = data.resourcetypes
+		type.init(_cp.data.resourcetypes,'--Select an resource type--','_id','title',':auto')
 	});
-	var _filter = '?staff=' +_app.curr_ses.user.id;
-	_app.get('/be/app/25014/api/app24005_personal_hub/be/mod01/contact/'+_filter, function(data){
+	var _filter = '?org=' +_app.curr_ses.user.org_id;
+	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/contact/'+_filter, function(data){
 		_cp.data.contacts =data.contacts
 		contact.init(_cp.data.contacts,'--Select an owner--','_id','contact_name',':auto')
 	});
@@ -37,13 +37,13 @@ _cp.load = function(){
 
 //////////////////////////////////// Define all the custom events  ////////////////////
 _cp.on.Cancel = function(){
-	_app.nav_page('store.asset_lst');
+	_app.nav_page('store.resource_lst');
 	return false;
 }
 
 _cp.on.Save = function(){
-	_app.post_form($('#form_asset'), _cp.api.item + _cp.params, function(resp){
-	_app.nav_page('store.asset_lst');
+	_app.post_form($('#form_resource'), _cp.api.item + _cp.params, function(resp){
+	_app.nav_page('store.resource_lst');
 	});
 	return false;
 }

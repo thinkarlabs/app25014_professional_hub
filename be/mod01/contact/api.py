@@ -1,7 +1,7 @@
 from fastapi import  APIRouter, Body, Request, Form, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from typing import List
-import uuid
+import uuid ,json
 from store.app25014_professional_hub.be.mod01.contact.model import m_contact,contactUpdate
 from rubix.be.db import rubix_collecton
 
@@ -12,17 +12,24 @@ app25014_professional_hub_be_mod01_contact_api = APIRouter()
 @app25014_professional_hub_be_mod01_contact_api.post("/", response_description="Create a new contact", status_code=status.HTTP_201_CREATED, response_model=m_contact)
 async def create_contact(request: Request, p_contact: m_contact = Body(...)):
     contact = jsonable_encoder(p_contact)
+    ses = request.headers['x-ses']          
+    j_ctx = json.loads(ses)
+    print('j_ctx',j_ctx)
+   
+    contact['org_id']=str(j_ctx['org_id'])
+    contact['org_name']=str(j_ctx['org_name'])
+    print('contact-2',contact)
     xc_contacts = rubix_collecton(request.app.database, "contacts")
     created_contact = xc_contacts.create(contact)
     return created_contact
 
 
 @app25014_professional_hub_be_mod01_contact_api.get("/", response_description="List all contact")
-def list_contact(request: Request,staff:str=''):
+def list_contact(request: Request,org:str=''):
     qry = {}
        
-    if staff!='':
-        qry['user_id'] = staff
+    if org!='':
+        qry['org_id'] = org
         
     
     xc_contacts = rubix_collecton(request.app.database, "contacts")

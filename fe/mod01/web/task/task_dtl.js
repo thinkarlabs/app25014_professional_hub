@@ -18,16 +18,16 @@ _cp.init = function(){
 }
 
 _cp.load = function(){
-	var _filter = '?staff=' +_app.curr_ses.user.id;
+	var _filter = '?org=' +_app.curr_ses.user.org_id;
 
-	_app.get('/be/app/25014/api/app24005_professional_hub/be/mod01/project/'+_filter, function(project_data){
+	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/project/'+_filter, function(project_data){
 		_cp.data.projects = project_data.projects
 		project.init(_cp.data.projects,'--Select an project--','_id','project_title',':auto')
 		
-		var _filter = '?staff=' +_app.curr_ses.user.id;
+		var _filter = '?org=' +_app.curr_ses.user.org_id;
 
 	
-	_app.get('/be/app/25014/api/app24005_professional_hub/be/mod01/contact/'+_filter, function(data){
+	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/contact/'+_filter, function(data){
 		_cp.data.contacts =data.contacts
 		owner.init(_cp.data.contacts,'--Select an owner--','_id','contact_name',':auto')
 	

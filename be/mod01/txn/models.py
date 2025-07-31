@@ -17,8 +17,7 @@ class m_txn(BaseModel):
     category_id: str = Field(...)
     to_acc_name: str = Field(...)
     to_acc_id: str = Field(...)
-    user_id:str = Field(...)
-    user_name:str = Field(...)
+    
 
 class txnUpdate(BaseModel):
     txntype_name: Optional[str] = None

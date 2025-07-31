@@ -17,13 +17,18 @@ app25014_professional_hub_be_mod01_task_api = APIRouter()
 @app25014_professional_hub_be_mod01_task_api.post("/", response_description="Create a new task", status_code=status.HTTP_201_CREATED, response_model= m_task)
 async def create_task(request: Request, p_task: m_task = Body(...)):
     j_task = jsonable_encoder(p_task)
+    ses = request.headers['x-ses']          
+    j_ctx = json.loads(ses)
+    print('j_ctx',j_ctx)
+    j_task['org_id']=str(j_ctx['org_id'])
+    j_task['org_name']=str(j_ctx['org_name'])
     xc_tasks = rubix_collecton(request.app.database, "tasks")
     created_task= xc_tasks.create(j_task)
     return created_task
       
 #LIST    
 @app25014_professional_hub_be_mod01_task_api.get("/", response_description="List all tasks")
-def list_tasks(request: Request, project: str = '', status: str = '', st: str = '', en: str = '', notstatus: str = '', staff: str = ''):
+def list_tasks(request: Request, project: str = '', status: str = '', st: str = '', en: str = '', notstatus: str = '', org: str = ''):
     qry = {}
 
     if project:
@@ -35,8 +40,8 @@ def list_tasks(request: Request, project: str = '', status: str = '', st: str = 
     if status:
         qry['status_id'] = {'$eq': status}
         
-    if staff!='':
-        qry['user_id'] = staff
+    if org!='':
+        qry['org_id'] = org
 
     if st:
         start_date = datetime.strptime(st, '%Y-%m-%d')

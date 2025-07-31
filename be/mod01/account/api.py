@@ -14,17 +14,21 @@ app25014_professional_hub_be_mod01_account_api = APIRouter()
 @app25014_professional_hub_be_mod01_account_api.post("/", response_description="Create a new account", status_code=status.HTTP_201_CREATED, response_model=m_account)
 async def create_account(request: Request, p_account: m_account = Body(...)):
     account = jsonable_encoder(p_account)
-
+    ses = request.headers['x-ses']          
+    j_ctx = json.loads(ses)
+    print('j_ctx',j_ctx)
+    account['org_id']=str(j_ctx['org_id'])
+    account['org_name']=str(j_ctx['org_name'])
     xc_accounts = rubix_collecton(request.app.database, "accounts")
     created_account = xc_accounts.create(account)
     return created_account 
    
 #LIST 
 @app25014_professional_hub_be_mod01_account_api.get("/", response_description="List all account")
-def list_account(request: Request,staff: str = ''):
+def list_account(request: Request, org: str = ''):
     qry = {}
-    if staff!='':
-        qry['user_id'] = staff
+    if org!='':
+        qry['org_id'] = org
     xc_accounts = rubix_collecton(request.app.database, "accounts")
     accounts = xc_accounts.find_list(qry)
     return {"accounts":accounts}

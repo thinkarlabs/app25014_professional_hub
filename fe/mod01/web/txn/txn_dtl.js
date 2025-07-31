@@ -19,7 +19,7 @@ _cp.init = function(){
 }
 
 _cp.load = function(){
-		var _filter = '?staff=' +_app.curr_ses.user.id;
+		var _filter = '?org=' +_app.curr_ses.user.org_id;
 
 	
 	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/accoutn/'+_filter, function(acc_data){
@@ -27,13 +27,13 @@ _cp.load = function(){
 		from_acc.init(_cp.data.accounts,'Select an Account','_id','acc_title',':auto')
 		
 	});
-		var _filter = '?staff=' +_app.curr_ses.user.id;
+		var _filter = '?org=' +_app.curr_ses.user.org_id;
 
 	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/accoutn/'+_filter, function(acc_data){
 		_cp.data.accounts = acc_data.accounts
 		to_acc.init(_cp.data.accounts,'Select an Account','_id','acc_title',':auto')
 	});
-		var _filter = '?staff=' +_app.curr_ses.user.id;
+		var _filter = '?org=' +_app.curr_ses.user.org_id;
 
 	_app.get('/be/app/25014/api/app25014_professional_hub/be/mod01/category/'+_filter, function(cat_data){
 		_cp.data.categories = cat_data.categories

@@ -10,8 +10,7 @@ class m_account(BaseModel):
     acc_type_id: str = Field(...)
     acc_type_name: str = Field(...)    
     balance: float = Field(...)
-    user_id:str = Field(...)
-    user_name:str = Field(...)
+    
 
 class accountUpdate(BaseModel):
     acc_title: Optional[str] = None

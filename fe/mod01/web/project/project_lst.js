@@ -28,7 +28,7 @@ _cp.init = function(){
 // Assuming cp.on.filter_list function is defined
 _cp.on.filter_list = function() {
 	_filter = '?status=' + $('#sel_status').val()
-	_filter += '&staff=' +_app.curr_ses.user.id;
+	_filter += '&org=' +_app.curr_ses.user.org_id;
 
 	
 	_app.get(_cp.api.list + _filter, function( data ) {	
